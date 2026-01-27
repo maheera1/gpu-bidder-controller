@@ -27,11 +27,11 @@ func (s *MockServer) SubscribeProofRequests(req *typepb.GetFilteredProofRequests
 	ctx := stream.Context()
 	log.Println("mock: client subscribed; sending test ProofRequest updates")
 
-	// IMPORTANT: Your mapper compares hex(pr.Fulfiller) to PROVER*_ID.
-	// So we send fulfiller BYTES that hex-encode cleanly:
-	// 0x1111 => bytes {0x11, 0x11} => "1111"
-	prover1Fulfiller := mustDecodeHex("1111")
-	prover2Fulfiller := mustDecodeHex("2222")
+	// Real prover ID (20-byte address)
+	prover1Fulfiller := mustDecodeHex("50685c8c3924ae1af4dd7c1e1e7e9243b5c06cba")
+
+	// Dummy second prover (won’t be used)
+	prover2Fulfiller := mustDecodeHex("2222222222222222222222222222222222222222")
 
 	// Order 1 assigned to prover1
 	pr1 := &typepb.ProofRequest{
