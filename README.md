@@ -64,7 +64,15 @@ go run ./cmd/mock-server
 ### Terminal 3 — Controller
 
 ```bash
-go run ./cmd/controller
+export NETWORK_GRPC_ADDR="127.0.0.1:50051"
+export PROVER1_ID="0x50685c8c3924ae1af4dd7c1e1e7e9243b5c06cba"
+export PROVER2_ID="0x2222222222222222222222222222222222222222"
+export BIDDER1_UNIT="bidder1.service"
+export BIDDER2_UNIT="bidder2.service"
+export NOTIFY_URL="http://127.0.0.1:8081/signal"
+export DRY_RUN="0"
+
+sudo -E go run ./cmd/controller
 ```
 
 ### Expected Output
